@@ -15,6 +15,8 @@
 void inicializaPilha(t_stack *p)
 {
     p->head = NULL;
+    p->tail = NULL;
+    p->size = 0;
 }
  void add_node_to_bottom(int n, t_stack *p)
 {
@@ -42,7 +44,6 @@ void inicializaPilha(t_stack *p)
 void imprimirPilha(t_stack *p){
     t_node *ptr = p->head;
     if (ptr == NULL){
-        ft_printf("pilha vazia");
         return;
     }
     else{
@@ -55,19 +56,40 @@ void imprimirPilha(t_stack *p){
 }
 int main(int ac, char **av)
 {
-    t_stack *p = (t_stack *)malloc(sizeof(t_stack));
+    t_stack *a = (t_stack *)malloc(sizeof(t_stack));
+    t_stack *b = (t_stack *)malloc(sizeof(t_stack));
 
-    inicializaPilha(p);
+    inicializaPilha(a);
+    inicializaPilha(b);
     int x;
     x = 1;
+    char *num = av[x];
     if (ac >= 1)
     {
+        if (!(*num >= '0' && *num <= '9'))
+        {
+            ft_printf("Error\n");
+            return -1;
+        }
         while (av[x]){
-            add_node_to_bottom(ft_atoi(av[x]), p);
+            add_node_to_bottom(ft_atoi(av[x]), a);
             x++;
         }
-        imprimirPilha(p);
-        sb(p);
-        imprimirPilha(p);
+        ft_printf("output antes da operação\n");
+        ft_printf("pilha a\t\t\n");
+
+        imprimirPilha(a);
+        ft_printf("pilha b\t\t\n");
+
+        imprimirPilha(b);
+        ft_printf("output depois da operação\n");
+        pb(b, a);
+        pb(b, a);
+        pb(b, a);
+        rb(b);
+        ft_printf("pilha a\t\t\n");
+        imprimirPilha(a);
+        ft_printf("pilha b\t\t\n");
+        imprimirPilha(b);
     }
 }

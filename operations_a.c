@@ -17,17 +17,59 @@ void sa(t_stack *stack_a)
     
     t_node *node1 = stack_a->head;
     t_node *node2 = node1->next;
+    t_node *tmp = (t_node *)malloc(sizeof(t_node));
     if (!node1 || !node2)
         return;
-    {
-        int tmp;
-        tmp = node1->value;
-        node1->value = node2->value;
-        node2->value = tmp;
-    }
+    tmp->value = node1->value;
+    node1->value = node2->value;
+    node2->value = tmp->value;
+    free(tmp);
+    ft_printf("sa\n");
 }
 
-// void pa(stack *stack_a, stack *stack_b)
-// {
 
-// }
+
+void pa(t_stack *stack_a, t_stack *stack_b)
+{
+    t_node *node_a1 = stack_a->head;
+    t_node *node_b1 = stack_b->head;
+    t_node *tmp  = node_b1;
+    node_b1 = node_b1->next;
+    stack_b->head = node_b1;
+
+    if (node_a1 == NULL)
+        {
+            node_a1 = tmp;
+            node_a1->next = NULL;
+            stack_a->head = node_a1; 
+        }
+        else{
+                tmp->next = node_a1;
+                stack_a->head = tmp;
+        }
+        stack_b->size--;
+        stack_a->size++;
+    ft_printf("pa\n");
+}
+
+void ra(t_stack *stack_a)
+{
+    t_node *node_lst = stack_a->tail;
+    t_node *node1 = stack_a->head;
+    stack_a->head = node1->next;
+    node1->next = NULL;
+    node_lst->next = node1;
+    ft_printf("ra\n");
+}
+
+void rra(t_stack *stack_a)
+{
+    t_node *node_lst = stack_a->tail;
+    t_node *node1 = stack_a->head;
+    t_node *node_penultimate = node1->next->next;
+
+    node_lst->next = node1;
+    node_penultimate->next = NULL;
+    stack_a->head = node_lst;
+    ft_printf("rra\n");
+}
