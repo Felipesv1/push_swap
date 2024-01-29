@@ -6,7 +6,7 @@
 /*   By: felperei <felperei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:02:10 by felperei          #+#    #+#             */
-/*   Updated: 2024/01/24 13:30:21 by felperei         ###   ########.fr       */
+/*   Updated: 2024/01/29 15:19:50 by felperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,29 @@ void imprimirPilha(t_stack *p){
         }
     }
 }
+void	sort_3(t_stack *stack_a)
+{
+    int first;
+    int second;
+    int third;
+    first = stack_a->head->value;
+    second = stack_a->head->next->value;
+    third = stack_a->head->next->next->value;
+
+    if ((first > second && second > third && third < first) 
+    || (first < second && second > third && third > first)
+    ||(first > second && second < third && third > first))
+        sa(stack_a);
+    
+    first = stack_a->head->value;
+    second = stack_a->head->next->value;
+    third = stack_a->head->next->next->value;
+
+    if (first > second && second < third && third < first)
+        ra(stack_a);
+    if (first < second && second > third && second > third)
+        rra(stack_a);
+}
 int main(int ac, char **av)
 {
     t_stack *a = (t_stack *)malloc(sizeof(t_stack));
@@ -64,7 +87,7 @@ int main(int ac, char **av)
     int x;
     x = 1;
     char *num = av[x];
-    if (ac >= 1)
+    if (ac >= 2)
     {
         if (!(*num >= '0' && *num <= '9'))
         {
@@ -83,13 +106,11 @@ int main(int ac, char **av)
 
         imprimirPilha(b);
         ft_printf("output depois da operação\n");
-        pb(b, a);
-        pb(b, a);
-        pb(b, a);
-        rb(b);
+        sort_3(a);
         ft_printf("pilha a\t\t\n");
         imprimirPilha(a);
         ft_printf("pilha b\t\t\n");
         imprimirPilha(b);
-    }
+    }  
+    ft_printf("\n");
 }

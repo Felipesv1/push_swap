@@ -6,7 +6,7 @@
 /*   By: felperei <felperei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:48:14 by felperei          #+#    #+#             */
-/*   Updated: 2024/01/24 13:18:17 by felperei         ###   ########.fr       */
+/*   Updated: 2024/01/29 15:01:15 by felperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,11 @@ void pb(t_stack *stack_b, t_stack *stack_a)
 }
 void rb(t_stack *stack_b)
 {
-    t_node *node_lst = stack_b->tail;
-    t_node *node1 = stack_b->head;
+    t_node *node_lst;
+    t_node *node1;
+    
+    node1 = stack_b->head;
+    node_lst = stack_b->tail;
     stack_b->head = node1->next;
     node1->next = NULL;
     node_lst->next = node1;
@@ -62,8 +65,12 @@ void rrb(t_stack *stack_b)
 {
     t_node *node_lst = stack_b->tail;
     t_node *node1 = stack_b->head;
-    t_node *node_penultimate = node1->next->next;
+    t_node *node_penultimate;
 
+    while (node1 && node1->next->next != NULL)
+        node1 = node1->next;
+    node_penultimate = node1;
+    node1 = stack_b->head;
     node_lst->next = node1;
     node_penultimate->next = NULL;
     stack_b->head = node_lst;

@@ -6,7 +6,7 @@
 /*   By: felperei <felperei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:11:14 by felperei          #+#    #+#             */
-/*   Updated: 2024/01/24 13:33:10 by felperei         ###   ########.fr       */
+/*   Updated: 2024/01/29 11:18:22 by felperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,6 @@ void rrb(t_stack *stack_b);
 void rrr(t_stack *stack_a, t_stack *stack_b);
 void pa(t_stack *stack_a, t_stack *stack_b);
 void pb(t_stack *stack_b, t_stack *stack_a);
+
+static void	sort_3(t_stack *stack_a);
 #endif

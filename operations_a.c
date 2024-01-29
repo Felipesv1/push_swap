@@ -6,7 +6,7 @@
 /*   By: felperei <felperei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:15:05 by felperei          #+#    #+#             */
-/*   Updated: 2024/01/24 13:25:55 by felperei         ###   ########.fr       */
+/*   Updated: 2024/01/29 14:59:14 by felperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,11 @@ void pa(t_stack *stack_a, t_stack *stack_b)
 
 void ra(t_stack *stack_a)
 {
-    t_node *node_lst = stack_a->tail;
-    t_node *node1 = stack_a->head;
+    t_node *node_lst;
+    t_node *node1;
+
+    node1 = stack_a->head;
+    node_lst = stack_a->tail;
     stack_a->head = node1->next;
     node1->next = NULL;
     node_lst->next = node1;
@@ -66,8 +69,11 @@ void rra(t_stack *stack_a)
 {
     t_node *node_lst = stack_a->tail;
     t_node *node1 = stack_a->head;
-    t_node *node_penultimate = node1->next->next;
-
+    t_node *node_penultimate;
+    while (node1 && node1->next->next != NULL)
+        node1 = node1->next;
+    node_penultimate = node1;
+    node1 = stack_a->head;
     node_lst->next = node1;
     node_penultimate->next = NULL;
     stack_a->head = node_lst;
