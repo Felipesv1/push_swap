@@ -6,7 +6,7 @@
 /*   By: felperei <felperei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:02:10 by felperei          #+#    #+#             */
-/*   Updated: 2024/01/29 15:19:50 by felperei         ###   ########.fr       */
+/*   Updated: 2024/01/30 11:19:11 by felperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,27 @@ void inicializaPilha(t_stack *p)
         new_node->next = NULL;
     }
     p->size++;
+}
+ void add_node_to_top(int n, t_stack *p)
+{
+    t_node *new_node = (t_node*)malloc(sizeof(t_node));
+
+    if (new_node == NULL)
+        return;
+
+    new_node->value = n;
+
+    if (p->head == NULL)
+    {
+        p->head = new_node;
+        p->tail = new_node;
+        new_node->next = NULL;
+    }
+    else
+    {
+        new_node->next = p->head;
+        p->head = new_node;
+    }
 }
 void imprimirPilha(t_stack *p){
     t_node *ptr = p->head;
@@ -106,7 +127,10 @@ int main(int ac, char **av)
 
         imprimirPilha(b);
         ft_printf("output depois da operação\n");
-        sort_3(a);
+        pb(b, a);
+        pb(b, a);
+        pb(b, a);
+        rr(a, b);
         ft_printf("pilha a\t\t\n");
         imprimirPilha(a);
         ft_printf("pilha b\t\t\n");

@@ -6,7 +6,7 @@
 /*   By: felperei <felperei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:15:05 by felperei          #+#    #+#             */
-/*   Updated: 2024/01/29 14:59:14 by felperei         ###   ########.fr       */
+/*   Updated: 2024/01/30 13:25:16 by felperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,9 @@ void pa(t_stack *stack_a, t_stack *stack_b)
 {
     t_node *node_a1 = stack_a->head;
     t_node *node_b1 = stack_b->head;
-    t_node *tmp  = node_b1;
-    node_b1 = node_b1->next;
-    stack_b->head = node_b1;
+    stack_b->head = node_b1->next;
 
-    if (node_a1 == NULL)
-        {
-            node_a1 = tmp;
-            node_a1->next = NULL;
-            stack_a->head = node_a1; 
-        }
-        else{
-                tmp->next = node_a1;
-                stack_a->head = tmp;
-        }
-        stack_b->size--;
-        stack_a->size++;
+    add_node_to_top(node_b1->value, stack_a);
     ft_printf("pa\n");
 }
 

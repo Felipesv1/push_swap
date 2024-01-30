@@ -6,7 +6,7 @@
 /*   By: felperei <felperei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:48:14 by felperei          #+#    #+#             */
-/*   Updated: 2024/01/29 15:01:15 by felperei         ###   ########.fr       */
+/*   Updated: 2024/01/30 13:28:14 by felperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,37 +28,24 @@ void sb(t_stack *stack_b)
 }
 void pb(t_stack *stack_b, t_stack *stack_a)
 {
-    t_node *node_b1 = stack_b->head;
     t_node *node_a1 = stack_a->head;
-    t_node *tmp  = node_a1;
-    node_a1 = node_a1->next;
-    stack_a->head = node_a1;
+    t_node *node_b1 = stack_b->head;
+    stack_a->head = node_a1->next;
 
-    if (node_b1 == NULL)
-        {
-            node_b1 = tmp;
-            node_b1->next = NULL;
-            stack_b->head = node_b1; 
-        }
-        else{
-                tmp->next = node_b1;
-                stack_b->head = tmp;
-        }
-        stack_b->size++;
-        stack_a->size--;
+    add_node_to_top(node_a1->value, stack_b);
     ft_printf("pb\n");
-
 }
 void rb(t_stack *stack_b)
 {
     t_node *node_lst;
     t_node *node1;
-    
+
     node1 = stack_b->head;
     node_lst = stack_b->tail;
     stack_b->head = node1->next;
     node1->next = NULL;
     node_lst->next = node1;
+    ft_printf("ra\n");
     ft_printf("rb\n");
 }
 void rrb(t_stack *stack_b)
