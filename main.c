@@ -6,7 +6,7 @@
 /*   By: felperei <felperei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:02:10 by felperei          #+#    #+#             */
-/*   Updated: 2024/01/30 11:19:11 by felperei         ###   ########.fr       */
+/*   Updated: 2024/01/31 13:32:47 by felperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,29 +75,83 @@ void imprimirPilha(t_stack *p){
         }
     }
 }
-void	sort_3(t_stack *stack_a)
+int is_sorted(t_stack *list)
 {
-    int first;
-    int second;
-    int third;
-    first = stack_a->head->value;
-    second = stack_a->head->next->value;
-    third = stack_a->head->next->next->value;
-
-    if ((first > second && second > third && third < first) 
-    || (first < second && second > third && third > first)
-    ||(first > second && second < third && third > first))
-        sa(stack_a);
+    t_node *node = list->head;
     
-    first = stack_a->head->value;
-    second = stack_a->head->next->value;
-    third = stack_a->head->next->next->value;
-
-    if (first > second && second < third && third < first)
-        ra(stack_a);
-    if (first < second && second > third && second > third)
-        rra(stack_a);
+    while (node->next != NULL)
+    {
+        if (node->value > node->next->value)
+            return 0;
+        node = node->next;
+    }
+    return 1;
 }
+
+int    check_dup(t_stack *list)
+{
+    t_node *current = list->head;
+    t_node *runner;
+
+    while (current != NULL)
+    {
+        runner = current;
+        while (runner->next != NULL)
+        {
+            if (current->value == runner->next->value)
+                return 1;
+            runner = runner->next;
+        }
+        current = current->next;
+    }
+    return 0;
+}
+
+int overflow(t_stack *list)
+{
+    t_node *node = list->head;
+    while (node)
+    {
+        if (node->value >= 2147483648 )
+            return 1;
+        node = node->next; 
+    }
+    return (0);
+}
+
+int check_args(t_stack *list)
+{
+    if (is_sorted(list) == 1)
+        return 1;
+    if (check_dup(list) == 1)
+        return 1;
+    if (overflow(list) == 1)
+        return (1);
+}
+
+long    ft_atol(const char *nptr)
+{
+    long    res;
+    int        sign;
+
+    res = 0;
+    sign = 1;
+    while ((*nptr == 32) || (*nptr >= 9 && *nptr <= 13))
+        nptr++;
+    if (*nptr == '-' || *nptr == '+')
+    {
+        if (*nptr == '-')
+            sign = -1;
+        nptr++;
+    }
+    while (*nptr >= '0' && *nptr <= '9')
+    {
+        res *= 10;
+        res += *nptr++ - '0';
+    }
+    return ((long)(res * sign));
+}
+
 int main(int ac, char **av)
 {
     t_stack *a = (t_stack *)malloc(sizeof(t_stack));
@@ -106,19 +160,25 @@ int main(int ac, char **av)
     inicializaPilha(a);
     inicializaPilha(b);
     int x;
+    int i;
+
     x = 1;
-    char *num = av[x];
     if (ac >= 2)
     {
-        if (!(*num >= '0' && *num <= '9'))
-        {
-            ft_printf("Error\n");
-            return -1;
-        }
-        while (av[x]){
-            add_node_to_bottom(ft_atoi(av[x]), a);
+       while (av[x])
+            {
+                i = 0;
+                while (av[x][i])
+                {
+                    if (!ft_isdigit(av[x][i]))
+                        return 1;
+                    i++;
+                }
+            add_node_to_bottom(ft_atol(av[x]), a);
             x++;
-        }
+            }
+        if (check_args(a))
+            return 1;
         ft_printf("output antes da operação\n");
         ft_printf("pilha a\t\t\n");
 
@@ -127,10 +187,7 @@ int main(int ac, char **av)
 
         imprimirPilha(b);
         ft_printf("output depois da operação\n");
-        pb(b, a);
-        pb(b, a);
-        pb(b, a);
-        rr(a, b);
+        
         ft_printf("pilha a\t\t\n");
         imprimirPilha(a);
         ft_printf("pilha b\t\t\n");
