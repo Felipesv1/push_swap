@@ -3,18 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   merge.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: felperei <felperei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: feliperei <feliperei@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 13:51:33 by felperei          #+#    #+#             */
-/*   Updated: 2024/01/31 14:57:33 by felperei         ###   ########.fr       */
+/*   Updated: 2024/02/02 13:30:59 by feliperei        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-
-
-void split (t_node *source, t_stack *front, t_stack *back)
+void split (t_node *source, t_node **front, t_node **back)
 {
     t_node *slow;
     t_node *fast;
@@ -30,43 +28,41 @@ void split (t_node *source, t_stack *front, t_stack *back)
             fast = fast->next;
         }
     }
-    front->head = source;
-    back->tail = slow->next;
+    *front = source;
+    *back = slow->next;
     slow->next = NULL;
 }
 
-t_node *merge(t_node *a, t_node*b)
+t_node *merge(t_node *node_left, t_node *node_right)
 {
     t_node *result = NULL;
-    if (a == NULL)
-        return b;
-    else if (b == NULL)
-        return a;
+    if (node_left == NULL)
+        return node_right;
+    else if (node_right == NULL)
+        return node_left;
 
-        if (a->value < b->value)
+        if (node_left->value < node_right->value)
         {
-            result = a;
-            result->next = merge(a->next, b);
+            result = node_left;
+            result->next = merge(node_left->next, node_right);
         }else{
-            result = b;
-            result->next = merge(a, b->next)
+            result = node_right;
+            result->next = merge( node_left, node_right->next);
         }
         return result;
 }
 
-void merge_sort(t_stack *stack_a)
+void merge_sort(t_node **node_head)
 {
-    t_node *node_head;
-    t_node *front;
-    t_node *back;
-
-    node_head = stack_a;
-    if ((node_head == NULL) || (node_head->next == NULL))
+    t_node *head = *node_head;
+    t_node *front_left;
+    t_node *front_right;
+    if ((head == NULL) || (head->next == NULL))
         return;
     
-    split(node_head, &front, &back);
+    split(head, &front_left, &front_right);
+    merge_sort(&front_left);
+    merge_sort(&front_right);
 
-    merge(&front, &back);
-
-    node_head = merge(front, back);
+     *node_head = merge(front_left, front_right);
 }

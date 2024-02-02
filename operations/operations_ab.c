@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   operations_ab.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: felperei <felperei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: feliperei <feliperei@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:53:55 by felperei          #+#    #+#             */
-/*   Updated: 2024/01/30 11:20:04 by felperei         ###   ########.fr       */
+/*   Updated: 2024/02/01 20:53:41 by feliperei        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void ss(t_stack *stack_a, t_stack *stack_b)
 {

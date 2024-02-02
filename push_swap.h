@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: felperei <felperei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: feliperei <feliperei@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:11:14 by felperei          #+#    #+#             */
-/*   Updated: 2024/01/31 13:35:53 by felperei         ###   ########.fr       */
+/*   Updated: 2024/02/01 23:08:37 by feliperei        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,19 @@ void rrb(t_stack *stack_b);
 void rrr(t_stack *stack_a, t_stack *stack_b);
 void pa(t_stack *stack_a, t_stack *stack_b);
 void pb(t_stack *stack_b, t_stack *stack_a);
+
 void add_node_to_bottom(int n, t_stack *p);
- void add_node_to_top(int n, t_stack *p);
- void	sort_3(t_stack *stack_a);
+void add_node_to_top(int n, t_stack *p);
+void initial_Stack(t_stack *p);
+void print_stack(t_stack *p);
+void free_stack(t_stack *p);
+int is_sorted(t_stack *list);
+int check_dup(t_stack *list);
+int overflow(t_stack *list);
+int check_args(t_stack *list);
+long    ft_atol(const char *nptr);
+void	sort_3(t_stack *stack_a);
+void    sort_5(t_stack *stack_a, t_stack *stack_b);
+void merge_sort(t_node **node_head);
+
 #endif
