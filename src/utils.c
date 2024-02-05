@@ -6,7 +6,7 @@
 /*   By: felperei <felperei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:40:10 by feliperei         #+#    #+#             */
-/*   Updated: 2024/02/05 15:11:57 by felperei         ###   ########.fr       */
+/*   Updated: 2024/02/05 15:44:28 by felperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,10 @@ void print_stack(t_stack *p){
     if (ptr == NULL){
         return;
     }
-    else{
-        while(ptr)
-        {
-            ft_printf("%d\n", ptr->value);
-            ptr = ptr->next;
-        }
+    while(ptr)
+    {
+        ft_printf("%d\n", ptr->value);
+        ptr = ptr->next;
     }
 }
 
@@ -76,6 +74,7 @@ long    ft_atol(const char *nptr)
     {
         p->head = new_node;
         p->tail = new_node;
+
         new_node->next = NULL;
     }
     else

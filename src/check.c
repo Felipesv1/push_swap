@@ -6,7 +6,7 @@
 /*   By: felperei <felperei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:49:27 by feliperei         #+#    #+#             */
-/*   Updated: 2024/02/05 14:47:33 by felperei         ###   ########.fr       */
+/*   Updated: 2024/02/05 15:47:14 by felperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void free_stack(t_stack *list)
 {
+    if (list == NULL)
+        return;
     t_node *node = list->head;
     t_node *tmp;
     while (node)
@@ -87,6 +89,5 @@ int check_args(t_stack *list)
             free_stack(list);
             return (1);
         }
-        free_stack(list);
         return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: felperei <felperei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:02:10 by felperei          #+#    #+#             */
-/*   Updated: 2024/02/05 15:23:52 by felperei         ###   ########.fr       */
+/*   Updated: 2024/02/05 15:48:08 by felperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,12 @@ int main(int ac, char **av)
         ft_printf("output antes da operação\n");
         ft_printf("pilha a\t\t\n");
 
-         print_stack(a);
+        print_stack(a);
         ft_printf("pilha b\t\t\n");
 
         //  print_stack(b);
         ft_printf("output depois da operação\n");
-        //   sort_3(a);
+         sort_3(a);
         //merge_sort(&a->head);
 
         ft_printf("pilha a\t\t\n");
