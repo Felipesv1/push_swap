@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feliperei <feliperei@student.42.fr>        +#+  +:+       +#+        */
+/*   By: felperei <felperei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:40:10 by feliperei         #+#    #+#             */
-/*   Updated: 2024/02/02 14:25:02 by feliperei        ###   ########.fr       */
+/*   Updated: 2024/02/05 15:11:57 by felperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,18 +85,15 @@ long    ft_atol(const char *nptr)
     }
 }
 
- void add_node_to_bottom(int n, t_stack *p)
+void add_node_to_bottom(int n, t_stack *p)
 {
-    t_node *new_node = (t_node*)malloc(sizeof(t_node));
+    t_node *new_node = (t_node *)malloc(sizeof(t_node));
 
     if (new_node == NULL)
-    {
-        free_stack(p);
         return;
-    }
+        
     new_node->value = n;
-
-    if (p->head == NULL)    
+    if (p->head == NULL)
     {
         p->head = new_node;
         p->tail = new_node;

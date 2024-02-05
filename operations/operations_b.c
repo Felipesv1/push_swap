@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations_b.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feliperei <feliperei@student.42.fr>        +#+  +:+       +#+        */
+/*   By: felperei <felperei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:48:14 by felperei          #+#    #+#             */
-/*   Updated: 2024/02/01 20:53:24 by feliperei        ###   ########.fr       */
+/*   Updated: 2024/02/05 12:15:00 by felperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void pb(t_stack *stack_b, t_stack *stack_a)
     t_node *node_a1 = stack_a->head;
     t_node *node_b1 = stack_b->head;
     stack_a->head = node_a1->next;
-
     add_node_to_top(node_a1->value, stack_b);
     ft_printf("pb\n");
 }

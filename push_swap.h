@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feliperei <feliperei@student.42.fr>        +#+  +:+       +#+        */
+/*   By: felperei <felperei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:11:14 by felperei          #+#    #+#             */
-/*   Updated: 2024/02/01 23:08:37 by feliperei        ###   ########.fr       */
+/*   Updated: 2024/02/05 10:45:45 by felperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,9 @@ int overflow(t_stack *list);
 int check_args(t_stack *list);
 long    ft_atol(const char *nptr);
 void	sort_3(t_stack *stack_a);
+void    sort_4(t_stack *stack_a, t_stack *stack_b);
 void    sort_5(t_stack *stack_a, t_stack *stack_b);
+void little(t_stack *stack_a);
 void merge_sort(t_node **node_head);
 
 #endif
