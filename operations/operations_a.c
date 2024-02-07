@@ -6,15 +6,16 @@
 /*   By: felperei <felperei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:15:05 by felperei          #+#    #+#             */
-/*   Updated: 2024/02/05 12:37:17 by felperei         ###   ########.fr       */
+/*   Updated: 2024/02/07 09:16:13 by felperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void sa(t_stack *stack_a)
+int sa(t_stack *stack_a)
 {
-    
+     if (sa(stack_a) == -1)
+        return -1;
     t_node *node1 = stack_a->head;
     t_node *node2 = node1->next;
     t_node *tmp = (t_node *)malloc(sizeof(t_node));
@@ -29,20 +30,26 @@ void sa(t_stack *stack_a)
 
 
 
-void pa(t_stack *stack_a, t_stack *stack_b)
+int pa(t_stack *stack_a, t_stack *stack_b)
 {
-    t_node *node_a1 = stack_a->head;
-    t_node *node_b1 = stack_b->head;
-    stack_b->head = node_b1->next;
+         if (pa(stack_a) == -1)
+        return -1;
+    t_node *node_b = stack_b->head;
+    stack_b->head = node_b->next;
 
-    add_node_to_top(node_b1->value, stack_a);
+    node_b->next = stack_a->head;
+    stack_a->head = node_b;
+    if (stack_a->size == 0)
+        stack_a->tail = node_b;
+    stack_a->size++;
+    stack_b->size--;
     ft_printf("pa\n");
 }
 
 void ra(t_stack *stack_a)
 {
-    if (stack_a->size < 2)
-        return;
+    if (ra(stack_a) == -1)
+        return -1;
     t_node *node_lst;
     t_node *node1;
 
@@ -57,6 +64,8 @@ void ra(t_stack *stack_a)
 
 void rra(t_stack *stack_a)
 {
+    if (rra(stack_a) == -1)
+        return -1;
     t_node *node_lst = stack_a->tail;
     t_node *node1 = stack_a->head;
     t_node *node_penultimate;

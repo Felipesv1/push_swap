@@ -6,7 +6,7 @@
 /*   By: felperei <felperei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:02:10 by felperei          #+#    #+#             */
-/*   Updated: 2024/02/05 15:48:08 by felperei         ###   ########.fr       */
+/*   Updated: 2024/02/07 10:00:05 by felperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ int main(int ac, char **av)
     int i;
 
     x = 1;
-    
+    if (ac == 1 || (ac == 2 && !av[1][0]))
+    return (1);
+    else if (argc == 2)
+		args = ft_split(argv[1], ' ');
     if (ac >= 2)
     {
 
@@ -59,8 +62,8 @@ int main(int ac, char **av)
 
         //  print_stack(b);
         ft_printf("output depois da operação\n");
-         sort_3(a);
-        //merge_sort(&a->head);
+        //  sort_3(a);
+
 
         ft_printf("pilha a\t\t\n");
          print_stack(a);

@@ -6,7 +6,7 @@
 /*   By: felperei <felperei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:11:14 by felperei          #+#    #+#             */
-/*   Updated: 2024/02/05 15:44:35 by felperei         ###   ########.fr       */
+/*   Updated: 2024/02/07 10:40:08 by felperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "libft/libft.h"
-
+# include "stdbool.h"
 
 typedef struct l_node
 {
     int value;
+    int index;
     struct l_node *next;
 } t_node;
 
@@ -57,7 +58,9 @@ long    ft_atol(const char *nptr);
 void	sort_3(t_stack *stack_a);
 void    sort_4(t_stack *stack_a, t_stack *stack_b);
 void    sort_5(t_stack *stack_a, t_stack *stack_b);
+void sort_small (t_stack *stack_a, t_stack *stack_b);
+void	sort_stack(t_list **stack_a, t_list **stack_b);
 void little(t_stack *stack_a);
-void merge_sort(t_node **node_head);
+
 
 #endif
