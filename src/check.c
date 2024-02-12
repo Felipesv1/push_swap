@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: felperei <felperei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: feliperei <feliperei@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:49:27 by feliperei         #+#    #+#             */
-/*   Updated: 2024/02/05 15:47:14 by felperei         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:47:55 by feliperei        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,13 @@ int check_args(t_stack *list)
 {
     if (check_dup(list) == 1)
     {
+        ft_printf("Error\n");
         free_stack(list);
         return (1);
     }
     if (overflow(list) == 1)
         {
+            ft_printf("Error\n");
             free_stack(list);
             return (1);
         }

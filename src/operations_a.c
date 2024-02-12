@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations_a.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: felperei <felperei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: feliperei <feliperei@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:15:05 by felperei          #+#    #+#             */
-/*   Updated: 2024/02/07 09:16:13 by felperei         ###   ########.fr       */
+/*   Updated: 2024/02/12 14:56:46 by feliperei        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,28 @@
 
 int sa(t_stack *stack_a)
 {
-     if (sa(stack_a) == -1)
-        return -1;
+ 	if (stack_a->size < 2)
+		return (-1);
     t_node *node1 = stack_a->head;
     t_node *node2 = node1->next;
     t_node *tmp = (t_node *)malloc(sizeof(t_node));
     if (!node1 || !node2)
-        return;
+        return -1;
     tmp->value = node1->value;
     node1->value = node2->value;
     node2->value = tmp->value;
     free(tmp);
     ft_printf("sa\n");
+    return (0);
 }
 
 
 
 int pa(t_stack *stack_a, t_stack *stack_b)
 {
-         if (pa(stack_a) == -1)
-        return -1;
+    
+        if (stack_b->size == 0)
+		return (-1);
     t_node *node_b = stack_b->head;
     stack_b->head = node_b->next;
 
@@ -44,12 +46,13 @@ int pa(t_stack *stack_a, t_stack *stack_b)
     stack_a->size++;
     stack_b->size--;
     ft_printf("pa\n");
+    return (0);
 }
 
-void ra(t_stack *stack_a)
+int ra(t_stack *stack_a)
 {
-    if (ra(stack_a) == -1)
-        return -1;
+	if (stack_a->size < 2)
+		return (-1);
     t_node *node_lst;
     t_node *node1;
 
@@ -60,12 +63,13 @@ void ra(t_stack *stack_a)
     node_lst->next = node1;
     stack_a->tail = node1;
     ft_printf("ra\n");
+    return (0);
 }
 
-void rra(t_stack *stack_a)
+int rra(t_stack *stack_a)
 {
-    if (rra(stack_a) == -1)
-        return -1;
+   if (stack_a->size < 2)
+		return (-1);
     t_node *node_lst = stack_a->tail;
     t_node *node1 = stack_a->head;
     t_node *node_penultimate;
@@ -78,4 +82,5 @@ void rra(t_stack *stack_a)
     stack_a->head = node_lst;
     stack_a->tail = node_penultimate;
     ft_printf("rra\n");
+    return (0);
 }

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   radix_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: felperei <felperei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: feliperei <feliperei@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 10:32:47 by felperei          #+#    #+#             */
-/*   Updated: 2024/02/07 11:33:23 by felperei         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:48:58 by feliperei        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static t_node *get_min(t_stack *stack)
+static t_node *get_next_min(t_stack *stack)
 {
     t_node *head;
     t_node *min;
@@ -22,7 +22,6 @@ static t_node *get_min(t_stack *stack)
     has_min = 0;
 
     head = stack->head;
-
     if (head)
     {
         while (head)
@@ -41,14 +40,13 @@ static t_node *get_min(t_stack *stack)
 void set_index(t_stack *stack)
 {
     t_node *head;
-
     int index;
-    head = get_min(stack);
     index = 0;
+    head = get_next_min(stack);
     while (head)
     {
         head->index = index++;
-        head = get_min(stack);
+        head = get_next_min(stack);
     }
 }
 
@@ -68,19 +66,26 @@ int get_max_index(t_stack *stack)
     }
     return (max);
 }
-int get_min_index(t_stack *stack)
+// int get_min_index(t_stack *stack)
+// {
+//     t_node *tmp;
+
+//     int max;
+
+//     tmp = stack->head;
+//     min = tmp->index;
+//     while (tmp)
+//     {
+//         if (tmp->index < max)
+//                 min = tmp->index;
+//             tmp = tmp->next;
+//     }
+//     return (min);
+// }
+void	sort_stack(t_stack *stack_a, t_stack *stack_b)
 {
-    t_node *tmp;
-
-    int max;
-
-    tmp = stack->head;
-    min = tmp->index;
-    while (tmp)
-    {
-        if (tmp->index < max)
-                min = tmp->index;
-            tmp = tmp->next;
-    }
-    return (min);
+	if (stack_a->size <= 5)
+		sort_small(stack_a, stack_b);
+	else
+		radix_sort(stack_a, stack_b);
 }

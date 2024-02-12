@@ -3,40 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   operations_b.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: felperei <felperei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: feliperei <feliperei@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:48:14 by felperei          #+#    #+#             */
-/*   Updated: 2024/02/07 09:17:34 by felperei         ###   ########.fr       */
+/*   Updated: 2024/02/12 14:14:48 by feliperei        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
 
-void sb(t_stack *stack_b)
+int sb(t_stack *stack_b)
 {
-     if (sb(stack_a) == -1)
-        return -1;
+   	if (stack_b->size < 2)
+		return (-1);
     t_node *node1 = stack_b->head;
     t_node *node2 = node1->next;
     t_node *tmp = (t_node *)malloc(sizeof(t_node));
     if (!node1 || !node2)
-        return;
+        return -1;
     tmp->value = node1->value;
     node1->value = node2->value;
     node2->value = tmp->value;
     free(tmp);
     ft_printf("sb\n");
+    return (0);
 }
-void pb(t_stack *stack_b, t_stack *stack_a)
+int pb(t_stack *stack_b, t_stack *stack_a)
 {
-    // t_node *node_a1 = stack_a->head;
-    // t_node *node_b1 = stack_b->head;
-    // stack_a->head = node_a1->next;
-    // add_node_to_top(node_a1->value, stack_b);
-    // stack_a->size--;
-     if (pb(stack_a) == -1)
-        return -1;
+    if (stack_a->size == 0)
+		return (-1);
     t_node *node_a = stack_a->head;
     stack_a->head = node_a->next;
 
@@ -47,11 +43,12 @@ void pb(t_stack *stack_b, t_stack *stack_a)
     stack_b->size++;
     stack_a->size--;
     ft_printf("pb\n");
+    return (0);
 }
-void rb(t_stack *stack_b)
+int rb(t_stack *stack_b)
 {
-     if (rb(stack_a) == -1)
-        return -1;
+    	if (stack_b->size < 2)
+		return (-1);
     t_node *node_lst;
     t_node *node1;
 
@@ -62,11 +59,12 @@ void rb(t_stack *stack_b)
     node_lst->next = node1;
     ft_printf("ra\n");
     ft_printf("rb\n");
+    return (0);
 }
-void rrb(t_stack *stack_b)
+int rrb(t_stack *stack_b)
 {
-     if (rrb(stack_a) == -1)
-        return -1;
+    	if (stack_b->size < 2)
+		return (-1);
     t_node *node_lst = stack_b->tail;
     t_node *node1 = stack_b->head;
     t_node *node_penultimate;
@@ -79,4 +77,6 @@ void rrb(t_stack *stack_b)
     node_penultimate->next = NULL;
     stack_b->head = node_lst;
     ft_printf("rrb\n");
+    return (0);
+
 }
