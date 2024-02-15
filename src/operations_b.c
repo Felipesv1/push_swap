@@ -6,7 +6,7 @@
 /*   By: feliperei <feliperei@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:48:14 by felperei          #+#    #+#             */
-/*   Updated: 2024/02/12 14:14:48 by feliperei        ###   ########.fr       */
+/*   Updated: 2024/02/15 12:39:17 by feliperei        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,34 @@ int sb(t_stack *stack_b)
 }
 int pb(t_stack *stack_b, t_stack *stack_a)
 {
+   
+      // Verifica se a pilha stack_a está vazia
     if (stack_a->size == 0)
-		return (-1);
-    t_node *node_a = stack_a->head;
-    stack_a->head = node_a->next;
+        return -1; // Retorna erro se a pilha estiver vazia
 
-    node_a->next = stack_b->head;
-    stack_b->head = node_a;
-    if (stack_b->size == 0)
-        stack_b->tail = node_a;
-    stack_b->size++;
+    // Remove o nó do topo de stack_a
+    t_node *tmp = stack_a->head;
+    stack_a->head = stack_a->head->next;
     stack_a->size--;
+
+    // Insere o nó removido no topo de stack_b
+    tmp->next = stack_b->head;
+    stack_b->head = tmp;
+    stack_b->size++;
+
+    // Atualiza a cauda de stack_b, se necessário (opcional)
+    if (stack_b->size == 1)
+        stack_b->tail = stack_b->head;
+
+    // Exemplo de impressão (você pode substituir por sua própria função de impressão)
     ft_printf("pb\n");
-    return (0);
+
+    return 0; // Retorna
 }
+
 int rb(t_stack *stack_b)
 {
-    	if (stack_b->size < 2)
+ 	if (stack_b->size < 2 || stack_b->head == NULL)
 		return (-1);
     t_node *node_lst;
     t_node *node1;
@@ -57,7 +68,7 @@ int rb(t_stack *stack_b)
     stack_b->head = node1->next;
     node1->next = NULL;
     node_lst->next = node1;
-    ft_printf("ra\n");
+    stack_b->tail = node1;
     ft_printf("rb\n");
     return (0);
 }

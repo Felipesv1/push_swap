@@ -6,7 +6,7 @@
 /*   By: feliperei <feliperei@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:11:14 by felperei          #+#    #+#             */
-/*   Updated: 2024/02/12 15:45:54 by feliperei        ###   ########.fr       */
+/*   Updated: 2024/02/15 11:04:21 by feliperei        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,16 @@ int pb(t_stack *stack_b, t_stack *stack_a);
 void rra3(t_stack *stack_a);
 t_node *add_node_to_bottom(int n, t_stack *p);
 void add_node_to_top(int n, t_stack *p);
-void initial_Stack(t_stack *p);
+void init_Stack(t_stack *p, int ac , char **av);
 void print_stack(t_stack *p);
 void free_stack(t_stack *p);
 int is_sorted(t_stack *list);
+void	ft_free(void **mat);
 int check_dup(t_stack *list);
-int overflow(t_stack *list);
-int check_args(t_stack *list);
+// int overflow(t_stack *list);
+// t_node	*ft_lstlast(t_list *lst);
+// t_node	*ft_lstnew(int value);
+void check_args(char **av, int ac);
 long    ft_atol(const char *nptr);
 void	sort_3(t_stack *stack_a);
 void    sort_4(t_stack *stack_a, t_stack *stack_b);

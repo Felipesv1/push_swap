@@ -6,23 +6,48 @@
 /*   By: feliperei <feliperei@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:40:10 by feliperei         #+#    #+#             */
-/*   Updated: 2024/02/12 15:45:37 by feliperei        ###   ########.fr       */
+/*   Updated: 2024/02/15 11:55:24 by feliperei        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void initial_Stack(t_stack *p)
+void	ft_free(void **mat)
 {
-    if (p == NULL)
-    {
-        free_stack(p);
-        return; 
-    }
-    p->head = NULL;
-    p->tail = NULL;
-    p->size = 0;
+	size_t	i;
+
+	i = 0;
+	while (mat[i])
+		free(mat[i++]);
+	free(mat);
 }
+void init_Stack(t_stack *p, int ac , char **av)
+{
+    t_node *new;
+    char **args;
+    int i;
+    if (ac == 2)
+            ft_split(av[1], ' ');
+    else 
+    {
+        i = 1;
+        args = av;
+    }
+    while (args[i])
+    {
+        new = add_node_to_bottom(ft_atol(args[i]), p);
+        if (new == NULL)
+        {
+            free_stack(p);
+            return;
+        }
+        i++;
+    }
+    set_index(p);
+    if (ac == 2)
+        ft_free((void **)args);
+}
+    
 void print_stack(t_stack *p){
     t_node *ptr = p->head;
     if (ptr == NULL){

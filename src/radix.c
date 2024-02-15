@@ -6,7 +6,7 @@
 /*   By: feliperei <feliperei@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 11:09:05 by felperei          #+#    #+#             */
-/*   Updated: 2024/02/12 15:51:06 by feliperei        ###   ########.fr       */
+/*   Updated: 2024/02/15 12:16:21 by feliperei        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,6 @@ void radix_sort(t_stack *a, t_stack *b)
         size = a->size;
         while (size-- && !is_sorted(a))
         {
-            ft_printf("size value: %d\n", a->head->value);
-            ft_printf("size index: %d\n", a->head->index);
             if (((a->head->index >> bit) & 1) == 0)
                 pb(b, a);
             else

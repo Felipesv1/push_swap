@@ -6,7 +6,7 @@
 /*   By: feliperei <feliperei@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:15:05 by felperei          #+#    #+#             */
-/*   Updated: 2024/02/12 14:56:46 by feliperei        ###   ########.fr       */
+/*   Updated: 2024/02/15 12:41:46 by feliperei        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int sa(t_stack *stack_a)
     if (!node1 || !node2)
         return -1;
     tmp->value = node1->value;
+    
     node1->value = node2->value;
     node2->value = tmp->value;
     free(tmp);
@@ -35,23 +36,26 @@ int pa(t_stack *stack_a, t_stack *stack_b)
 {
     
         if (stack_b->size == 0)
-		return (-1);
-    t_node *node_b = stack_b->head;
-    stack_b->head = node_b->next;
+        return (-1);
 
-    node_b->next = stack_a->head;
-    stack_a->head = node_b;
-    if (stack_a->size == 0)
-        stack_a->tail = node_b;
-    stack_a->size++;
+    t_node *tmp = stack_b->head;
+    stack_b->head = stack_b->head->next;
     stack_b->size--;
+
+    tmp->next = stack_a->head;
+    stack_a->head = tmp;
+    stack_a->size++;
+
+    if (stack_a->size == 1)
+        stack_a->tail = stack_a->head;
+
     ft_printf("pa\n");
     return (0);
 }
 
 int ra(t_stack *stack_a)
 {
-	if (stack_a->size < 2)
+	if (stack_a->size < 2 || stack_a->head == NULL)
 		return (-1);
     t_node *node_lst;
     t_node *node1;
