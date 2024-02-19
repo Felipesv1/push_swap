@@ -6,7 +6,7 @@
 /*   By: feliperei <feliperei@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:11:14 by felperei          #+#    #+#             */
-/*   Updated: 2024/02/15 11:04:21 by feliperei        ###   ########.fr       */
+/*   Updated: 2024/02/15 20:09:51 by feliperei        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,6 @@ void free_stack(t_stack *p);
 int is_sorted(t_stack *list);
 void	ft_free(void **mat);
 int check_dup(t_stack *list);
-// int overflow(t_stack *list);
-// t_node	*ft_lstlast(t_list *lst);
-// t_node	*ft_lstnew(int value);
 void check_args(char **av, int ac);
 long    ft_atol(const char *nptr);
 void	sort_3(t_stack *stack_a);
@@ -67,6 +64,5 @@ void little(t_stack *stack_a);
 int find_midle(t_stack *stack_a);
 int get_max_index(t_stack *stack);
 void radix_sort(t_stack *stack_a, t_stack*stack_b);
-// int get_min_index(t_stack *stack);
 void set_index(t_stack *stack);
 #endif

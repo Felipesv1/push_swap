@@ -6,11 +6,40 @@
 /*   By: feliperei <feliperei@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:14:56 by feliperei         #+#    #+#             */
-/*   Updated: 2024/02/09 17:03:27 by feliperei        ###   ########.fr       */
+/*   Updated: 2024/02/15 20:13:11 by feliperei        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+void free_stack(t_stack *list)
+{
+    if (list == NULL)
+        return;
+    t_node *node = list->head;
+    t_node *tmp;
+    while (node)
+    {
+        tmp = node;
+        node = node->next;
+        free(tmp);
+    }
+    free(list);
+}
+
+
+int is_sorted(t_stack *list)
+{
+    t_node *node = list->head;
+    
+    while (node->next != NULL)
+    {
+        if (node->value > node->next->value)
+            return 0;
+        node = node->next;
+    }
+    return (1);
+}
 void little(t_stack *stack_a)
 {
      t_node *node = stack_a->head;

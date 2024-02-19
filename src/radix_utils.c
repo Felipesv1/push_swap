@@ -6,7 +6,7 @@
 /*   By: feliperei <feliperei@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 10:32:47 by felperei          #+#    #+#             */
-/*   Updated: 2024/02/13 16:40:38 by feliperei        ###   ########.fr       */
+/*   Updated: 2024/02/15 20:09:42 by feliperei        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,25 +64,9 @@ int get_max_index(t_stack *stack)
                 max = tmp->index;
         tmp = tmp->next;
     }
-                ft_printf("max: %d\n", max);
     return (max);
 }
-// int get_min_index(t_stack *stack)
-// {
-//     t_node *tmp;
 
-//     int max;
-
-//     tmp = stack->head;
-//     min = tmp->index;
-//     while (tmp)
-//     {
-//         if (tmp->index < max)
-//                 min = tmp->index;
-//             tmp = tmp->next;
-//     }
-//     return (min);
-// }
 void	sort_stack(t_stack *stack_a, t_stack *stack_b)
 {
 	if (stack_a->size <= 5)

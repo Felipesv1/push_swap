@@ -6,7 +6,7 @@
 /*   By: feliperei <feliperei@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:15:05 by felperei          #+#    #+#             */
-/*   Updated: 2024/02/15 12:41:46 by feliperei        ###   ########.fr       */
+/*   Updated: 2024/02/19 12:51:21 by feliperei        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ int pa(t_stack *stack_a, t_stack *stack_b)
         if (stack_b->size == 0)
         return (-1);
 
-    t_node *tmp = stack_b->head;
+    t_node *tmp;
+    tmp = stack_b->head;
     stack_b->head = stack_b->head->next;
     stack_b->size--;
 

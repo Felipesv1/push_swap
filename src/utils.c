@@ -6,7 +6,7 @@
 /*   By: feliperei <feliperei@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:40:10 by feliperei         #+#    #+#             */
-/*   Updated: 2024/02/15 11:55:24 by feliperei        ###   ########.fr       */
+/*   Updated: 2024/02/19 12:48:30 by feliperei        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,17 @@ void init_Stack(t_stack *p, int ac , char **av)
         ft_free((void **)args);
 }
     
-void print_stack(t_stack *p){
-    t_node *ptr = p->head;
-    if (ptr == NULL){
-        return;
-    }
-    while(ptr)
-    {
-        ft_printf("%d\n", ptr->value);
-        ptr = ptr->next;
-    }
-}
+// void print_stack(t_stack *p){
+//     t_node *ptr = p->head;
+//     if (ptr == NULL){
+//         return;
+//     }
+//     while(ptr)
+//     {
+//         ft_printf("%d\n", ptr->value);
+//         ptr = ptr->next;
+//     }
+// }
 
 long    ft_atol(const char *nptr)
 {
@@ -83,31 +83,6 @@ long    ft_atol(const char *nptr)
     return ((long)(res * sign));
 }
 
- void add_node_to_top(int n, t_stack *p)
-{
-    t_node *new_node = (t_node*)malloc(sizeof(t_node));
-
-    if (new_node == NULL)
-    {
-        free_stack(p);
-        return;
-    }
-
-    new_node->value = n;
-
-    if (p->head == NULL)
-    {
-        p->head = new_node;
-        p->tail = new_node;
-
-        new_node->next = NULL;
-    }
-    else
-    {
-        new_node->next = p->head;
-        p->head = new_node;
-    }
-}
 
 t_node *add_node_to_bottom(int n, t_stack *p)
 {

@@ -6,7 +6,7 @@
 /*   By: feliperei <feliperei@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 11:09:05 by felperei          #+#    #+#             */
-/*   Updated: 2024/02/15 12:16:21 by feliperei        ###   ########.fr       */
+/*   Updated: 2024/02/15 20:09:15 by feliperei        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int get_max_bits(t_stack *a)
 
     while ((max >> max_bits) != 0)
         max_bits++;
-   
+        
     return (max_bits);
 }
 
