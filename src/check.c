@@ -6,7 +6,7 @@
 /*   By: feliperei <feliperei@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:49:27 by feliperei         #+#    #+#             */
-/*   Updated: 2024/02/19 12:18:54 by feliperei        ###   ########.fr       */
+/*   Updated: 2024/02/19 13:00:46 by feliperei        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,6 @@ int	has_duplicate(int num, char **argv, int i)
 		i++;
 	}
 	return (0);
-}
-int    check_dup(t_stack *list)
-{
-    t_node *current = list->head;
-    t_node *runner;
-    while (current != NULL)
-    {
-        runner = current;
-        while (runner->next != NULL)
-        {
-            if (current->value == runner->next->value)
-                return (1);
-            runner = runner->next;
-        }
-        current = current->next;
-    }
-    return (0);
 }
 static	void	check(long tmp, char **args, int i)
 {

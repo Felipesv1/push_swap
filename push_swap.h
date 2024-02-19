@@ -6,7 +6,7 @@
 /*   By: feliperei <feliperei@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:11:14 by felperei          #+#    #+#             */
-/*   Updated: 2024/02/15 20:09:51 by feliperei        ###   ########.fr       */
+/*   Updated: 2024/02/19 13:00:28 by feliperei        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void print_stack(t_stack *p);
 void free_stack(t_stack *p);
 int is_sorted(t_stack *list);
 void	ft_free(void **mat);
-int check_dup(t_stack *list);
 void check_args(char **av, int ac);
 long    ft_atol(const char *nptr);
 void	sort_3(t_stack *stack_a);
