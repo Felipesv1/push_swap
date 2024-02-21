@@ -6,7 +6,7 @@
 /*   By: felperei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:04:36 by felperei          #+#    #+#             */
-/*   Updated: 2024/01/17 09:39:13 by felperei         ###   ########.fr       */
+/*   Updated: 2024/02/21 14:39:45 by felperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	ft_putnbr_fd(int n, int fd);
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
 # endif
+
 char	*get_next_line(int fd);
 char	*gnl_strchr(const char *s, int c);
 int		check_type_input(const char *input, int i, va_list args);

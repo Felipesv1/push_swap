@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feliperei <feliperei@student.42.fr>        +#+  +:+       +#+        */
+/*   By: felperei <felperei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:49:27 by feliperei         #+#    #+#             */
-/*   Updated: 2024/02/19 13:00:46 by feliperei        ###   ########.fr       */
+/*   Updated: 2024/02/21 14:47:28 by felperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,44 +23,58 @@ int	has_duplicate(int num, char **argv, int i)
 	}
 	return (0);
 }
-static	void	check(long tmp, char **args, int i)
+
+static int	has_num(char *num)
+{
+	int	i;
+
+	i = 0;
+	if (num[0] == '-')
+		i++;
+	while (num[i])
+	{
+		if (!ft_isdigit(num[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+static void	check(long tmp, char **args, int i)
 {
 	if (has_duplicate(tmp, args, i))
-    {
-        ft_printf("Error\n");
-        exit(-1);
-    }
+	{
+		ft_printf("Error\n");
+		exit(-1);
+	}
+	if (!has_num(args[i]))
+	{
+		ft_printf("Error\n");
+		exit(-1);
+	}
 	if (tmp < -2147483648 || tmp > 2147483647)
-    {
-        ft_printf("Error\n");
-        exit(-1);
-    }
+	{
+		ft_printf("Error\n");
+		exit(-1);
+	}
 }
-void check_args(char **av, int ac)
+
+void	check_args(char **av, int ac)
 {
-    long tmp;
-    char **args;
-    int x;
+	long	tmp;
+	char	**args;
+	int		x;
 
-    if(ac == 2)
-    {
-        exit(-1);
-    }
-    if (ac == 2)
-            args = ft_split(av[1], ' ');
-    else
-    {
-        x = 1;
-        args = av;
-    }
-    while (args[x])
-    { 
-        tmp = ft_atol(args[x]);
-        check(tmp, args, x);
-        x++;
-     }
-    if (ac == 2)
-        ft_free((void **)args);
+	if (ac == 2)
+		exit(-1);
+	x = 1;
+	args = av;
+	while (args[x])
+	{
+		tmp = ft_atol(args[x]);
+		check(tmp, args, x);
+		x++;
+	}
+	if (ac == 2)
+		ft_free((void **)args);
 }
-
-

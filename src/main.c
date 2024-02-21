@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feliperei <feliperei@student.42.fr>        +#+  +:+       +#+        */
+/*   By: felperei <felperei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:02:10 by felperei          #+#    #+#             */
-/*   Updated: 2024/02/19 12:13:46 by feliperei        ###   ########.fr       */
+/*   Updated: 2024/02/21 14:41:37 by felperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-
-static void free_stacks(t_stack *a, t_stack *b)
+static void	free_stacks(t_stack *a, t_stack *b)
 {
-    free_stack(a);
-    free_stack(b);
+	free_stack(a);
+	free_stack(b);
 }
+
 static void	check_sorted(t_stack *stack_a, t_stack *stack_b)
 {
 	if (is_sorted(stack_a))
@@ -28,19 +28,21 @@ static void	check_sorted(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-        if (ac < 2)
-            return (-1);
-        check_args(av, ac);
-        t_stack *a = (t_stack *)malloc(sizeof(t_stack));
-        t_stack *b = NULL;
-        init_Stack(a, ac, av);
-        check_sorted(a, b);
-        if (a->size > 3)
-                b = (t_stack *)malloc(sizeof(t_stack));
-            sort_stack(a, b);
-            // print_stack(a);
-        free_stacks(a, b);
-        return (0);
+	t_stack	*a;
+	t_stack	*b;
+
+	if (ac < 2)
+		return (-1);
+	check_args(av, ac);
+	a = (t_stack *)malloc(sizeof(t_stack));
+	b = NULL;
+	init_stack(a, ac, av);
+	check_sorted(a, b);
+	if (a->size > 3)
+		b = (t_stack *)malloc(sizeof(t_stack));
+	sort_stack(a, b);
+	free_stacks(a, b);
+	return (0);
 }
